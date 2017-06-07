@@ -7,6 +7,7 @@ http://www.infosecurityeurope.com/en/Sessions/39674/Shadow-Admins-Underground-Ac
 # Overview
 ACLight is a tool for discovering privileged accounts through advanced ACLs (Access Lists) analysis.
 It includes the discovery of Shadow Admins in the scanned network.
+
 The tool queries the Active Directory (AD) for its objects' ACLs and then filters and analyzes the sensitive permissions of each.
 The result is a list of domain privileged accounts in the network (from the advanced ACLs perspective of the AD).
 You can run the scan with just any regular user (could be non-privileged user) and it automatically scans all the domains of the scanned network forest.
