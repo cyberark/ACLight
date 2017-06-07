@@ -32,4 +32,4 @@ Option 2:
 2) "All entities with extra permissions.txt" – Lists all the privileged entities that were discovered, it will include not only the user accounts but also other “empty” entities like empty groups or old accounts.
 3) "Privileged Accounts Permissions - Final Report.csv" - This is the final summary report - in this file you will find what are the exact sensitive permissions each account has.
 4) "Privileged Accounts Permissions - Irregular Accounts.csv" - Similar to the final report with only the privileged accounts that have direct assignment of ACL permissions (not through their group membership).
-5) "research.com - Full Output.csv" – Raw ACLs lists for each scanned domain.
+5) "<Domain name> - Full Output.csv" – Raw ACLs output for each scanned domain.
