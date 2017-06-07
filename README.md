@@ -29,7 +29,7 @@ Option 2:
 
 # Reading the results files:
 1) First check the - "Accounts with extra permissions.txt" file - It's straight-forward & important list of the privileged accounts that were discovered in the scanned network.
-2) "All entities with extra permissions.txt" - Lists all the privileged entities that were discovered, it will include not only the user accounts but also other “empty” entities like empty groups or old accounts.
+2) "All entities with extra permissions.txt" - The file lists all the privileged entities that were discovered, it will include not only the user accounts but also other “empty” entities like empty groups or old accounts.
 3) "Privileged Accounts Permissions - Final Report.csv" - This is the final summary report - in this file you will find what are the exact sensitive permissions each account has.
 4) "Privileged Accounts Permissions - Irregular Accounts.csv" - Similar to the final report with only the privileged accounts that have direct assignment of ACL permissions (not through their group membership).
 5) "[Domain name] - Full Output.csv" - Raw ACLs output for each scanned domain.
