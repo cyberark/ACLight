@@ -1,5 +1,5 @@
 # ACLight
-A script for advanced discovery of Privileged Accounts - includes Shadow Admins
+A script for advanced discovery of Privileged Accounts - includes Shadow Admins.
 
 The tool was published as part of the "Shadow Admins" research presentation at the InfoSecurity conference:
 http://www.infosecurityeurope.com/en/Sessions/39674/Shadow-Admins-Underground-Accounts-That-Undermine-The-Network
