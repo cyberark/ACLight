@@ -12,7 +12,8 @@ The tool queries the Active Directory (AD) for its objects' ACLs and then filter
 The result is a list of domain privileged accounts in the network (from the advanced ACLs perspective of the AD).
 You can run the scan with just any regular user (could be non-privileged user) and it automatically scans all the domains of the scanned network forest.
 
-Execute it and check the result.
+Just run it and check the result.
+
 You should take care of all the privileged accounts that the tool discovers for you.
 Especially - take care of the Shadow Admins - those are accounts with direct sensitive ACLs assignments (not through membership in other known privileged groups).
 
