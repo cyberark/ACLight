@@ -20,6 +20,7 @@ Especially - take care of the Shadow Admins - those are accounts with direct sen
 # Usage:
 Option 1:
 -	Double click on "Execute-ACLight.bat".
+
 Option 2:
 -	Open PowerShell (with -ExecutionPolicy Bypass)
 -	Go to "ACLight" main folder
