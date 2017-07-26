@@ -35,3 +35,12 @@ Option 2:
 3) "Privileged Accounts Permissions - Final Report.csv" - This is the final summary report - in this file you will find what are the exact sensitive permissions each account has.
 4) "Privileged Accounts Permissions - Irregular Accounts.csv" - Similar to the final report with only the privileged accounts that have direct assignment of ACL permissions (not through their group membership).
 5) "[Domain name] - Full Output.csv" - Raw ACLs output for each scanned domain.
+
+# Scalability - scanning very large networks or networks with multiple trusted domains:
+The tool by default will scan automatically all the domains in the target scanned AD forest.
+If you want to scan a specific domain and not the others - you can just close those domains’ pop-up windows when they show up and continue regularly.
+If you are scanning very large network (e.g.  50,000+ users in one domain) and encounter memory limitations during the scan - there are some tips you can check in the “issue” page.
+
+# References:
+The tool uses functions from the open source project PowerView by Will Schroeder (@harmj0y) - make sure you are familiar with this great project.
+For more comments and questions, you can contact Asaf Hecht (@Hechtov) and CyberArk Labs.
