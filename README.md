@@ -44,3 +44,4 @@ If you are scanning very large network (e.g.  50,000+ users in one domain) and e
 # References:
 The tool uses functions from the open source project PowerView by Will Schroeder (@harmj0y) - make sure you are familiar with this great project.
 For more comments and questions, you can contact Asaf Hecht (@Hechtov) and CyberArk Labs.
+
