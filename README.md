@@ -38,10 +38,12 @@ Option 2:
 
 # Scalability - scanning very large networks or networks with multiple trusted domains:
 The tool by default will scan automatically all the domains in the target scanned AD forest.
+
 If you want to scan a specific domain and not the others - you can just close those domains’ pop-up windows when they show up and continue regularly.
+
 If you are scanning very large network (e.g.  50,000+ users in one domain) and encounter memory limitations during the scan - there are some tips you can check in the “issue” page.
 
 # References:
 The tool uses functions from the open source project PowerView by Will Schroeder (@harmj0y) - make sure you are familiar with this great project.
-For more comments and questions, you can contact Asaf Hecht (@Hechtov) and CyberArk Labs.
 
+For more comments and questions, you can contact Asaf Hecht (@Hechtov) and CyberArk Labs.
