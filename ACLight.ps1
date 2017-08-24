@@ -186,7 +186,7 @@ function Start-domainACLsAnalysis {
     foreach ($OU in $domainOU){
         $counter++
         $OUdn = 'None'  
-        $NameArray = $OU -Split(ì/î)
+        $NameArray = $OU -Split(‚Äú/‚Äù)
         [int]$NameCount = 0
         ForEach ($NameCell in $NameArray)
         { 
@@ -247,7 +247,7 @@ function Start-domainACLsAnalysis {
         $EntityType = "Other"
 
         $domainGroupName = "None"            
-        $NameArray = $_.UpdatedIdentityReference -Split(ì\\î)
+        $NameArray = $_.UpdatedIdentityReference -Split(‚Äú\\‚Äù)
         $NameCount = 0
         ForEach ($NameCell in $NameArray)
         { 
@@ -366,7 +366,7 @@ function Start-domainACLsAnalysis {
 
         try { 
             $isMemberOfOtherGroups = 'False'           
-            $NameArray = $ACE.EntityName -Split(ì\\î)
+            $NameArray = $ACE.EntityName -Split(‚Äú\\‚Äù)
             [int]$NameCount = 0
             ForEach ($NameCell in $NameArray)
             { 
@@ -613,7 +613,7 @@ function Start-ACLsAnalysis {
             foreach ($fullNameEntity in $privilegedDomainAccountList){  
                 $domainEntityName = $fullNameEntity  
                 if ($fullNameEntity -match "\\"){         
-                    $NameArray = $fullNameEntity -Split(ì\\î)
+                    $NameArray = $fullNameEntity -Split(‚Äú\\‚Äù)
                     $NameCount = 0
                     ForEach ($NameCell in $NameArray)
                     { 
@@ -694,8 +694,8 @@ function Start-ACLsAnalysis {
             $exportAccCsvFile += $Domain
             $exportAccCsvFile += " - Sensitive Accounts.csv"
             $importedCsvData = Import-Csv $exportAccCsvFile 
-            $importedCsvData | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation ñAppend $exportAllAccCsvFile             
-            $importedCsvData | Where { ($_.AccountGroup -eq $_.AccountName)}  | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation ñAppend $exportAllIrregularAccCsvFile 
+            $importedCsvData | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation ‚ÄìAppend $exportAllAccCsvFile             
+            $importedCsvData | Where { ($_.AccountGroup -eq $_.AccountName)}  | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation ‚ÄìAppend $exportAllIrregularAccCsvFile 
             if (Test-Path $exportAccCsvFile) {
                 Remove-Item $exportAccCsvFile
             }
@@ -2776,7 +2776,7 @@ function Invoke-ACLScanner {
             # or you can write here your own filters - for example, filter for accounts that have only the GenericAll permission.
             ######
 
-        } | Export-Csv -NoTypeInformation ñAppend $exportCsvFile
+        } | Export-Csv -NoTypeInformation -append $exportCsvFile
     }
     catch{
         Write-Warning "`n$_"
