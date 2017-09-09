@@ -247,7 +247,7 @@ function Start-domainACLsAnalysis {
         $EntityType = "Other"
 
         $domainGroupName = "None"            
-        $NameArray = $_.UpdatedIdentityReference -Split(“\\”)
+        $NameArray = $_.UpdatedIdentityReference -Split("\\")
         $NameCount = 0
         ForEach ($NameCell in $NameArray)
         { 
