@@ -695,7 +695,7 @@ function Start-ACLsAnalysis {
             $exportAccCsvFile += " - Sensitive Accounts.csv"
             $importedCsvData = Import-Csv $exportAccCsvFile 
             $importedCsvData | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation -append $exportAllAccCsvFile             
-            $importedCsvData | Where { ($_.AccountGroup -eq $_.AccountName)}  | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation –Append $exportAllIrregularAccCsvFile 
+            $importedCsvData | Where { ($_.AccountGroup -eq $_.AccountName)}  | sort Domain,AccountName,AccountGroup,ActiveDirectoryRights,ObjectRights,ObjectDN,ObjectOwner,ObjectClassCategory -Unique | Export-Csv -NoTypeInformation -append $exportAllIrregularAccCsvFile 
             if (Test-Path $exportAccCsvFile) {
                 Remove-Item $exportAccCsvFile
             }
