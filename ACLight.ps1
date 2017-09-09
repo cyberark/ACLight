@@ -613,7 +613,7 @@ function Start-ACLsAnalysis {
             foreach ($fullNameEntity in $privilegedDomainAccountList){  
                 $domainEntityName = $fullNameEntity  
                 if ($fullNameEntity -match "\\"){         
-                    $NameArray = $fullNameEntity -split("\\"
+                    $NameArray = $fullNameEntity -split("\\")
                     $NameCount = 0
                     ForEach ($NameCell in $NameArray)
                     { 
