@@ -186,7 +186,7 @@ function Start-domainACLsAnalysis {
     foreach ($OU in $domainOU){
         $counter++
         $OUdn = 'None'  
-        $NameArray = $OU -Split(“/”)
+        $NameArray = $OU -split("/")
         [int]$NameCount = 0
         ForEach ($NameCell in $NameArray)
         { 
@@ -366,7 +366,7 @@ function Start-domainACLsAnalysis {
 
         try { 
             $isMemberOfOtherGroups = 'False'           
-            $NameArray = $ACE.EntityName -Split(“\\”)
+            $NameArray = $ACE.EntityName -split("\\")
             [int]$NameCount = 0
             ForEach ($NameCell in $NameArray)
             { 
@@ -613,7 +613,7 @@ function Start-ACLsAnalysis {
             foreach ($fullNameEntity in $privilegedDomainAccountList){  
                 $domainEntityName = $fullNameEntity  
                 if ($fullNameEntity -match "\\"){         
-                    $NameArray = $fullNameEntity -Split(“\\”)
+                    $NameArray = $fullNameEntity -split("\\"
                     $NameCount = 0
                     ForEach ($NameCell in $NameArray)
                     { 
