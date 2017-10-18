@@ -585,6 +585,7 @@ function Start-ACLsAnalysis {
             catch{
             }
         }
+        
         Write-Output "All the processes completed. Now, starting Accounts analysis.."
 
         foreach ($Domain in $DomainList){
@@ -597,9 +598,8 @@ function Start-ACLsAnalysis {
             $domainUsers = Get-NetUser -Domain $Domain
             $domainUserList = @()
             $privDomain = @()
-            foreach ($userAccount in $domainUsers){
-                $domainUserList += $domainUsers.name
-            }
+            $domainUserList = $domainUsers.name
+            
             Import-Csv $exportCsvFile | Where-Object {$_} | ForEach-Object {
                 If ($privilegedDomainAccountList -notcontains $_.ObjectOwner){
                     $privilegedDomainAccountList += $_.ObjectOwner
