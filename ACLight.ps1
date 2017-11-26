@@ -268,7 +268,7 @@ function Start-domainACLsAnalysis {
                 }
                 catch {
                     $GroupMembersRecursive = Get-NetGroupMember -Domain $Domain -GroupName $domainGroupName
-                    Write-Warning $_
+                    #Write-Warning $_
                 }
                 $GroupMembers = @()
                 foreach ($Entity in $GroupMembersRecursive){   
@@ -636,7 +636,7 @@ function Start-ACLsAnalysis {
                         }
                         catch {
                             $GroupMembersRecursive = Get-NetGroupMember -domain $Domain -GroupName $domainEntityName
-                            Write-Warning $_
+                            #Write-Warning $_
                         }
                         foreach ($accountName in $GroupMembersRecursive){
                             $accountDomainName = $EntityStartName + "\" + $accountName.MemberName
