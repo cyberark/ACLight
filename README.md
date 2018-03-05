@@ -1,7 +1,9 @@
 # ACLight
 A script for advanced discovery of Privileged Accounts - includes Shadow Admins.
 
-The tool was published as part of the "Shadow Admins" research - more details on "Shadow Admins" are in the blog post: https://www.cyberark.com/threat-research-blog/shadow-admins-stealthy-accounts-fear
+# Check out ACLight2 (version 2 folder) - much quicker, improved scan and better results
+
+The tool (version 1) was published as part of the "Shadow Admins" research - more details on "Shadow Admins" are in the blog post: https://www.cyberark.com/threat-research-blog/shadow-admins-stealthy-accounts-fear
 
 The research was also presented at the InfoSecurity conference:
 http://www.infosecurityeurope.com/en/Sessions/39674/Shadow-Admins-Underground-Accounts-That-Undermine-The-Network
@@ -36,12 +38,7 @@ Option 2:
 4) "Privileged Accounts Permissions - Irregular Accounts.csv" - Similar to the final report with only the privileged accounts that have direct assignment of ACL permissions (not through their group membership).
 5) "[Domain name] - Full Output.csv" - Raw ACLs output for each scanned domain.
 
-# Scalability - scanning very large networks or networks with multiple trusted domains:
-The tool by default will scan automatically all the domains in the target scanned AD forest.
-
-If you want to scan a specific domain and not the others - you can just close those domains’ pop-up windows when they show up and continue regularly.
-
-If you are scanning very large network (e.g.  50,000+ users in one domain) and encounter memory limitations during the scan - there are some tips you can check in the “issue” page.
+# Scalability and Performances issues - use the improved version of the tool: ACLight2
 
 # References:
 The tool uses functions from the open source project PowerView by Will Schroeder (@harmj0y) - a great project.
