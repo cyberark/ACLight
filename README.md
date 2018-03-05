@@ -1,7 +1,7 @@
 # ACLight
 A script for advanced discovery of Privileged Accounts - includes Shadow Admins.
 
-# Check out ACLight2 (version 2 folder) - much quicker, improved scan and better results
+# Check out ACLight2 - much quicker, improved scan and better results
 
 The tool (version 1) was published as part of the "Shadow Admins" research - more details on "Shadow Admins" are in the blog post: https://www.cyberark.com/threat-research-blog/shadow-admins-stealthy-accounts-fear
 
