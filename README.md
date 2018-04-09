@@ -41,6 +41,6 @@ Option 2:
 # Scalability and Performances issues - use the improved version of the tool: ACLight2
 
 # References:
-The tool uses functions from the open source project PowerView by Will Schroeder (@harmj0y) - a great project.
+The tool uses functions from the open source project PowerView by Will Schroeder ([@harmj0y](https://twitter.com/harmj0y)) - a great project.
 
-For more comments and questions, you can contact Asaf Hecht (@Hechtov) and CyberArk Labs.
+For more comments and questions, you can contact Asaf Hecht (([@Hechtov](https://twitter.com/Hechtov)) and CyberArk Labs.
