@@ -38,7 +38,7 @@ Option 2:
 4) "Privileged Accounts Permissions - Irregular Accounts.csv" - Similar to the final report with only the privileged accounts that have direct assignment of ACL permissions (not through their group membership).
 5) "[Domain name] - Full Output.csv" - Raw ACLs output for each scanned domain.
 
-# Scalability and Performances issues - use the improved version of the tool: ACLight2
+# Solving Scalability and Performance issues from version 1 - use the improved version of the tool: ACLight2
 
 # References:
 The tool uses functions from the open source project PowerView by Will Schroeder ([@harmj0y](https://twitter.com/harmj0y)) - a great project.
