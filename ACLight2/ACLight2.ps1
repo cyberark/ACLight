@@ -22,6 +22,7 @@ version 2.0: 17.5.17
 version 2.1: 4.6.17
 version 3: 17.10.17 -> adding multi-layered ACLs analysis
 version 3.1: 17.12.17 -> improved results
+version 3.2: 26.5.18 -> Updated ACLight2 and its final summary txt report
 
 Authors: Asaf Hecht (@hechtov) - Cyberark's research team.
          Using functions from the great PowerView project created by: Will Schroeder (@harmj0y).
@@ -57,9 +58,8 @@ Those are accounts with direct sensitive ACLs assignments (not through the known
 THE RESULTS FILES:
 
 1) First check the - "Accounts with extra permissions.txt" file - It's straight-forward & powerful list of the privileged accounts that were discovered in the network.
-3) "Privileged Accounts - Final Report.csv" - This is the final summary report - in this file you can see what is the exact sensitive permission each account has.
-4) "Privileged Accounts - Irregular Accounts.csv" - Similar to the final report just with only the privileged accounts that have direct permissions (not through their group membership).
-
+2) "Privileged Accounts - Final Report.csv" - This is the final summary report - in this file you can see what is the exact sensitive permission each account has.
+3) "Privileged Accounts - Irregular Accounts.csv" - Similar to the final report just only with the privileged accounts that have direct permissions (not through their group membership) = A.K.A Shadow Admins.
 
 ----------------------------------------------------------------------------------------------------#>
 
@@ -596,13 +596,13 @@ function Write-LayersInfo {
                     if (-not ($groupLine.AccountGroup -eq $groupLine.AccountName)) {
                         foreach ($groupMember in $groupLine) {
                             if ($layer -eq $groupMember.layer) {
-                                if (-not ($layersOutputArray.contains(($gap + $groupMember.AccountGroup + " - group")))) {
+                                if (-not ($layersOutputArray.contains(($gap + $groupMember.AccountGroup + " - group:")))) {
                                     if ($firstLayerGroup) {
                                         $layersOutputArray.Add("From group membership:")
                                         $firstLayerGroup = $False
                                     }
                                     $layersOutputArray.Add($gap + $groupMember.AccountGroup + " - group:")
-                                    }
+                                }
                                 $layersOutputArray.Add($gap + $gap + $groupMember.AccountName)
                             }
                         }
@@ -695,7 +695,7 @@ function Start-ACLsAnalysis {
 "
         write-output $title
 
-        Write-Output "Great, the scan was started - version 3.1.`nIt could take a while, (5-60+ mins) depends on the size of the network`n"
+        Write-Output "Great, the scan was started - version 3.2.`nIt could take a while, (5-30+ mins) depends on the size of the network`n"
 
 
         $PathFolder = $exportCsvFolder
