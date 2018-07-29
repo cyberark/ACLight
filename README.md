@@ -38,8 +38,8 @@ Option 1:
 
 Option 2:
 -	Open PowerShell (with -ExecutionPolicy Bypass)
--	Go to "ACLight" main folder
--	“Import-Module '.\ACLight.psm1'”
+-	Go to "ACLight2" main folder
+-	“Import-Module '.\ACLight2.psm1'”
 -	“Start-ACLsAnalysis”
 
 Choose the target domain:  
