@@ -9,7 +9,7 @@
 
 Release Notes:
 
-The ACLight is a tool for discovering Privileged Accounts through advanced ACLs analysis.
+ACLight is a tool for discovering Privileged Accounts through advanced ACLs analysis.
 It will discover the Shadow Admins in the network.
 It queries the Active Directory for its objects' ACLs and then filters the sensitive permissions from each one of them.
 The results are the most privileged accounts in the network (from the advanced ACLs perspective of the AD).
@@ -50,7 +50,7 @@ Option 3 - Open PowerShell (with -ExecutionPolicy Bypass):
 
 Choose the target domain:
     By default, ACLight automatically scans all the domains of the scanned network forest.
-    You can use the “Domain” parameter if you are interested in scanning only one specific domain:
+    You can use the â€œDomainâ€ parameter if you are interested in scanning only one specific domain:
         -> Start-ACLsAnalysis -domain "DomainName.com"
 
 Execute it and check the result!
@@ -62,7 +62,7 @@ Those are accounts with direct sensitive ACLs assignments (as opposed of getting
 
 THE RESULTS FILES:
 
-1) First, check the scan’s executive summary - " Privileged Accounts - Layers Analysis.txt" - It's an important and straight-forward list of the most privileged accounts that were discovered in the scanned network.
+1) First, check the scanâ€™s executive summary - " Privileged Accounts - Layers Analysis.txt" - It's an important and straight-forward list of the most privileged accounts that were discovered in the scanned network.
 2) "Privileged Accounts - Final Report.csv" - This is the final summary report - in this file you can see what is the exact sensitive permission each account has.
 3) "Privileged Accounts - Irregular Accounts.csv" - Similar to the final report just only with the privileged accounts that have direct permissions (not through their group membership) = A.K.A Shadow Admins.
 
@@ -700,7 +700,7 @@ function Start-ACLsAnalysis {
 "
         write-output $title
 
-        write-output "SkyArk - a tool for advanced discovery of Privileged Accounts - including risky Shadow Admins`n"
+        write-output "ACLight2 - a tool for advanced discovery of Privileged Accounts - including risky Shadow Admins`n"
         write-output "             Developed by Asaf Hecht (@Hechtov)"
         write-output " Uses functions from the great PowerView project (@harmj0y)"
         write-output "           Follow Twitter for more future updates`n`n"
