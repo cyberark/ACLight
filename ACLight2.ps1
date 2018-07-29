@@ -1440,15 +1440,28 @@ function Get-NetGroup {
                     $GroupSearcher.filter = "(&(objectCategory=group)(name=$GroupName)$Filter)"
                 }
             
-                $GroupSearcher.FindAll() | Where-Object {$_} | ForEach-Object {
-                    # if we're returning full data objects
-                    if ($FullData) {
-                        # convert/process the LDAP fields for each result
-                        Convert-LDAPProperty -Properties $_.Properties
+                try {
+                    $GroupSearcher.FindAll() | Where-Object {$_} | ForEach-Object {
+                        # if we're returning full data objects
+                        if ($FullData) {
+                            # convert/process the LDAP fields for each result
+                            Convert-LDAPProperty -Properties $_.Properties
+                        }
+                        else {
+                            # otherwise we're just returning the group name
+                            $_.properties.samaccountname
+                        }
+                    }                    
+                }
+                catch {
+                    $ErrorMessage = $_.Exception.Message
+                    if ($ErrorMessage -like "*A referral was returned*") {
+                        Write-Warning "Lack of permissions between domains \ trust problem - couldn't read an ACL of an object from another domain in the forest, the current user might don't have permissions to read the other external domain's objects"
+                        Write-Warning "Error message from line 1444: Exception calling `"FindAll`" with `"0`" argument(s): `"A referral was returned from the server.`""
+                        Write-host "The scan continues... you can also try and scan only one domain using the `"Domain`" parameter"
                     }
                     else {
-                        # otherwise we're just returning the group name
-                        $_.properties.samaccountname
+                        $ErrorMessage
                     }
                 }
             }
@@ -3035,7 +3048,17 @@ function Get-ADObject {
                 $ObjectSearcher.filter = "(&(samAccountName=$SamAccountName)$Filter)"
             }
 
-            $Results = $ObjectSearcher.FindAll()
+            try {
+                $Results = $ObjectSearcher.FindAll()
+            }
+            catch {
+                $ErrorMessage = $_.Exception.Message
+                if ($ErrorMessage -like "*A referral was returned*") {
+                    Write-Warning "Lack of permissions between domains \ trust problem - couldn't read an ACL of an object from another domain in the forest, the current user might don't have permissions to read the other external domain's objects"
+                    Write-Warning "Error message from line 3052: Exception calling `"FindAll`" with `"0`" argument(s): `"A referral was returned from the server.`""
+                    Write-host "The scan continues... you can also try and scan only one domain using the `"Domain`" parameter"
+                }
+            }
             $Results | Where-Object {$_} | ForEach-Object {
                 if($ReturnRaw) {
                     $_
@@ -3045,151 +3068,13 @@ function Get-ADObject {
                     Convert-LDAPProperty -Properties $_.Properties
                 }
             }
-            $Results.dispose()
+            if ($Results) {
+                $Results.dispose()
+            }
             $ObjectSearcher.dispose()
         }
     }
 }
-<#
-
-function Get-ADObject {
-<#
-    .SYNOPSIS
-
-        Takes a domain SID and returns the user, group, or computer object
-        associated with it.
-
-    .PARAMETER SID
-
-        The SID of the domain object you're querying for.
-
-    .PARAMETER Name
-
-        The Name of the domain object you're querying for.
-
-    .PARAMETER SamAccountName
-
-        The SamAccountName of the domain object you're querying for. 
-
-    .PARAMETER Domain
-
-        The domain to query for objects, defaults to the current domain.
-
-    .PARAMETER DomainController
-
-        Domain controller to reflect LDAP queries through.
-
-    .PARAMETER ADSpath
-
-        The LDAP source to search through, e.g. "LDAP://OU=secret,DC=testlab,DC=local"
-        Useful for OU queries.
-
-    .PARAMETER Filter
-
-        Additional LDAP filter string for the query.
-
-    .PARAMETER ReturnRaw
-
-        Switch. Return the raw object instead of translating its properties.
-        Used by Set-ADObject to modify object properties.
-
-    .PARAMETER PageSize
-
-        The PageSize to set for the LDAP searcher object.
-
-    .EXAMPLE
-
-        PS C:\> Get-ADObject -SID "S-1-5-21-2620891829-2411261497-1773853088-1110"
-        
-        Get the domain object associated with the specified SID.
-        
-    .EXAMPLE
-
-        PS C:\> Get-ADObject -ADSpath "CN=AdminSDHolder,CN=System,DC=testlab,DC=local"
-        
-        Get the AdminSDHolder object for the testlab.local domain.
-#>
-<#
-    [CmdletBinding()]
-    Param (
-        [Parameter(ValueFromPipeline=$True)]
-        [String]
-        $SID,
-
-        [String]
-        $Name,
-
-        [String]
-        $SamAccountName,
-
-        [String]
-        $Domain,
-
-        [String]
-        $DomainController,
-
-        [String]
-        $ADSpath,
-
-        [String]
-        $Filter,
-
-        [Switch]
-        $ReturnRaw,
-
-        [ValidateRange(1,10000)] 
-        [Int]
-        $PageSize = 200
-    )
-    process {
-        if($SID) {
-            # if a SID is passed, try to resolve it to a reachable domain name for the searcher
-            try {
-                $Name = Convert-SidToName $SID
-                if($Name) {
-                    $Canonical = Convert-NT4toCanonical -ObjectName $Name
-                    if($Canonical) {
-                        $Domain = $Canonical.split("/")[0]
-                    }
-                    else {
-                        Write-verbose "Error resolving SID '$SID'"
-                        return $Null
-                    }
-                }
-            }
-            catch {
-                Write-verbose "Error resolving SID '$SID' : $_"
-                return $Null
-            }
-        }
-
-        $ObjectSearcher = Get-DomainSearcher -Domain $Domain -DomainController $DomainController -ADSpath $ADSpath -PageSize $PageSize
-
-        if($ObjectSearcher) {
-
-            if($SID) {
-                $ObjectSearcher.filter = "(&(objectsid=$SID)$Filter)"
-            }
-            elseif($Name) {
-                $ObjectSearcher.filter = "(&(name=$Name)$Filter)"
-            }
-            elseif($SamAccountName) {
-                $ObjectSearcher.filter = "(&(samAccountName=$SamAccountName)$Filter)"
-            }
-
-            $ObjectSearcher.FindAll() | Where-Object {$_} | ForEach-Object {
-                if($ReturnRaw) {
-                    $_
-                }
-                else {
-                    # convert/process the LDAP fields for each result
-                    Convert-LDAPProperty -Properties $_.Properties
-                }
-            }
-        }
-    }
-}
-#>
 
 
 function Get-GUIDMap {
