@@ -609,8 +609,8 @@ function Write-LayersInfo {
                     }
                 }
                 $layersOutputArray.Add("From direct ACL assignment:")
+                $numShadowAdmins = 0
                 foreach ($AccountLine in $_.group){
-                    $numShadowAdmins = 0
                     if ($layer -eq $AccountLine.layer) {
                         if (-not (($layersOutputArray.contains($gap + $AccountLine.AccountName)) -or ($layersOutputArray.contains($gap + $gap + $AccountLine.AccountName)))) {
                             $layersOutputArray.Add($gap + $AccountLine.AccountName)
