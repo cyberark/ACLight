@@ -54,4 +54,4 @@ By default, ACLight automatically scans all the domains of the scanned network f
 # References:
 The tool uses functions from the open source project PowerView by Will Schroeder ([@harmj0y](https://twitter.com/harmj0y)) - a great project.
 
-For more comments and questions, you can contact Asaf Hecht (([@Hechtov](https://twitter.com/Hechtov)) and CyberArk Labs.
+For more comments and questions, you can contact Asaf Hecht ([@Hechtov](https://twitter.com/Hechtov)) and CyberArk Labs.
