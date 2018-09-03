@@ -45,6 +45,9 @@ Option 2:
 Choose the target domain:  
 By default, ACLight automatically scans all the domains of the scanned network forest. You can use the “Domain” parameter if you are interested in scanning only one specific domain:
 - Start-ACLsAnalysis -domain "DomainName.com"
+  
+**ACLight2 DEMO:**  
+![Demo](https://github.com/Hechtov/Photos/blob/master/ACLight/ACLight-v2.gif) 
 
 # Reading the results files:
 1) First, check the scan’s executive summary "Privileged Accounts - Layers Analysis.txt" - It's an important and straight-forward list of the most privileged accounts that were discovered in the scanned network.  
