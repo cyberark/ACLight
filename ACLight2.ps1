@@ -345,7 +345,7 @@ function Invoke-ACLcsvFileAnalysis {
             }
             else {
                 try {
-                    $GroupMembersRecursive = Get-NetGroupMember -Domain $Domain -Recurse -UseMatchingRule -GroupName $domainGroupName
+                    $GroupMembersRecursive = Get-NetGroupMember -Domain $Domain -Recurse -UseMatchingRule -GroupName $domainGroupName -ErrorAction Stop
                 }
                 catch {
                     $GroupMembersRecursive = Get-NetGroupMember -Domain $Domain -GroupName $domainGroupName
@@ -771,7 +771,7 @@ function Start-ACLsAnalysis {
                     if ($ADobject.objectclass -contains "group"){
                         [string]$groupName = $ADobject.name
                         try {
-                            $GroupMembers = Get-NetGroupMember -domain $Domain -Recurse -UseMatchingRule -GroupName $groupName
+                            $GroupMembers = Get-NetGroupMember -domain $Domain -Recurse -UseMatchingRule -GroupName $groupName -ErrorAction Stop
                         }
                         catch {
                             $GroupMembers = Get-NetGroupMember -domain $Domain -GroupName $groupName
@@ -871,7 +871,7 @@ function Start-ACLsAnalysis {
                     if ($isDomainGroup) {
                         $GroupMembersRecursive = @()
                         try {
-                            $GroupMembersRecursive = Get-NetGroupMember -domain $Domain -Recurse -UseMatchingRule -GroupName $domainEntityName
+                            $GroupMembersRecursive = Get-NetGroupMember -domain $Domain -Recurse -UseMatchingRule -GroupName $domainEntityName -ErrorAction Stop
                         }
                         catch {
                             $GroupMembersRecursive = Get-NetGroupMember -domain $Domain -GroupName $domainEntityName
