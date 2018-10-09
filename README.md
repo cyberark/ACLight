@@ -5,8 +5,7 @@ ACLight2 is the improved version of the tool.
 # Shadow Admins Research
 The tool (version 1) was published as part of the "Shadow Admins" research - more details on "Shadow Admins" are in the blog post: https://www.cyberark.com/threat-research-blog/shadow-admins-stealthy-accounts-fear  
   
-The research was also presented at the InfoSecurity conference, London:  
-http://www.infosecurityeurope.com/en/Sessions/39674/Shadow-Admins-Underground-Accounts-That-Undermine-The-Network  
+The research was presented at the InfoSecurity conference, London: [presentation link](https://www.slideshare.net/AsafHecht/the-presentation-on-my-shadow-admins-research)  
 
 # Overview
 ACLight is a tool for discovering privileged accounts through advanced ACLs analysis (objects’ ACLs - Access Lists, aka DACL\ACEs).  
