@@ -1,5 +1,5 @@
 # ACLight
-A tool for advanced discovery of Privileged Accounts - it includes Shadow Admins.  
+A tool for advanced discovery of Privileged Accounts - including Shadow Admins.  
 ACLight2 is the improved version of the tool.
 
 # Shadow Admins Research
@@ -20,7 +20,7 @@ Just run it and check the result.
 You should take care of all the privileged accounts that the tool discovers for you.  
 Especially - take care of the Shadow Admins - those are accounts with direct sensitive ACLs assignments (as opposed of getting privileges as part of membership in known privileged groups).
 
-For scanning cloud environments and discover the most privileged entities in AWS, check the new open source tool - SkyArk:  
+For scanning cloud environments and discover the most privileged entities in AWS and Azure, check the new open source tool - SkyArk:  
 https://github.com/cyberark/SkyArk  
 
 # ACLight2
